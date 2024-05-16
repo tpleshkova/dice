@@ -3,6 +3,7 @@ function getRandomInt(max) {
 }
 
 var flag1, flag2;
+var flag = false;
 var count1 = 0;
 var count2 = 0;
 var count3 = 0;
@@ -57,17 +58,35 @@ function winner_loser() {
         count3 += 1;
         console.log(count3);
     }
-
+    
     if (count1 + count2 === 3) {
         var winner = document.createElement("h2");
+        
         if (count1 > count2) {
             winner.innerHTML = "Player 1 wins";
-            document.getElementById("appendWinner").appendChild(winner);
-            refresh_text.innerHTML = "New Game";
+            if (flag == false)
+            {
+                document.getElementById("appendWinner").appendChild(winner);
+                flag = true;
+            }
+            else
+            {
+                document.querySelector("h2").innerHTML = "Player 1 wins";
+            }
+            
+            refresh_text.innerHTML = "Congratulations!";
         } else if (count2 > count1) {
             winner.innerHTML = "Player 2 wins";
-            document.getElementById("appendWinner").appendChild(winner);
-            refresh_text.innerHTML = "New Game";
+            if (flag == false)
+            {
+                document.getElementById("appendWinner").appendChild(winner);
+                flag = true;
+            }
+            else
+            {
+                document.querySelector("h2").innerHTML = "Player 2 wins";
+            }
+            refresh_text.innerHTML = "Congratulations!";
         }
         
         count1 = 0;
